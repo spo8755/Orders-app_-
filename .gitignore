@@ -1,0 +1,15 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Local env
+.env
+.env.*
+
+# Cursor / workspace artifacts
+.cursor/
