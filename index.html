@@ -162,7 +162,184 @@
       <div class="container footer__inner">
         <p>Orders App, <span id="current-year"></span></p>
       </div>
+    </footer><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders App — приветственный лендинг</title>
+  <meta name="description" content="Приветственный лендинг проекта Orders App с демонстрацией возможностей и черновым модулем учета заказов.">
+  <meta property="og:title" content="Orders App">
+  <meta property="og:description" content="Небольшой лендинг и черновой модуль учета заказов для малого бизнеса.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a href="#top" class="brand">Orders App</a>
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="#features">Преимущества</a>
+          <a href="#about">О проекте</a>
+          <a href="#draft-module">Черновой модуль</a>
+        </nav>
+        <button
+          type="button"
+          class="btn btn-ghost theme-toggle"
+          id="theme-toggle"
+          aria-label="Переключить тему"
+          aria-pressed="false"
+        >Тема: светлая</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="container hero__inner">
+          <p class="hero__eyebrow">Привет! Это Orders App</p>
+          <h1 class="hero__title">Управляйте заказами быстро и без лишней сложности</h1>
+          <p class="hero__text">
+            Небольшой веб-проект для малого бизнеса: фиксируйте заказы, отслеживайте статусы
+            и храните позиции в одном месте.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn-primary" href="#draft-module">Посмотреть демо-модуль</a>
+            <a class="btn btn-secondary" href="#about">Узнать больше</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="container">
+          <h2 id="features-title" class="section-heading">Преимущества</h2>
+          <div class="features-grid">
+            <article class="feature-card">
+              <h3>Простота</h3>
+              <p>Интерфейс без перегрузки: добавление, редактирование и фильтрация заказов.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Скорость</h3>
+              <p>Работает на чистом HTML/CSS/JS и запускается сразу без сборки.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Практичность</h3>
+              <p>Сохранение данных в браузере позволяет не терять прогресс между сессиями.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="about" aria-labelledby="about-title">
+        <div class="container about">
+          <h2 id="about-title" class="section-heading">О проекте</h2>
+          <p>
+            Сейчас это приветственный лендинг с рабочей черновой версией модуля учёта заказов.
+            Следующий этап — расширение функционала и вынос модуля в отдельную стабильную часть продукта.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="draft-module" aria-labelledby="draft-title">
+        <div class="container">
+          <div class="draft-card">
+            <h2 id="draft-title" class="section-heading">Черновой модуль учёта заказов</h2>
+            <p class="draft-card__text">
+              Функционал уже реализован и доступен для теста. По умолчанию скрыт, чтобы основной сценарий сайта оставался лендингом.
+            </p>
+            <button type="button" class="btn btn-primary" id="open-orders-btn">Открыть модуль</button>
+          </div>
+
+          <div id="orders-module" class="orders-module hidden" aria-live="polite">
+            <div class="app">
+              <header class="header">
+                <h3 class="title">Учёт заказов</h3>
+                <p class="subtitle">Малый бизнес — заказы в одном месте</p>
+              </header>
+
+              <div class="main">
+                <section class="card form-section" aria-labelledby="form-heading">
+                  <h4 id="form-heading" class="section-title">Новый заказ</h4>
+                  <form id="order-form" class="order-form" novalidate>
+                    <div class="form-row">
+                      <label for="client-name">Имя клиента</label>
+                      <input type="text" id="client-name" name="clientName" required maxlength="120" placeholder="Иван Петров">
+                    </div>
+                    <div class="form-row">
+                      <label for="contact">Контакт</label>
+                      <input type="text" id="contact" name="contact" required maxlength="200" placeholder="Телефон, email или @telegram">
+                    </div>
+                    <div class="form-row form-row--narrow">
+                      <label for="cost">Стоимость, ₽</label>
+                      <input type="number" id="cost" name="cost" required min="0" step="0.01" placeholder="0">
+                    </div>
+
+                    <div class="form-row-dates" role="group" aria-labelledby="dates-legend">
+                      <span id="dates-legend" class="form-group-label">Даты</span>
+                      <div class="form-row-dates__grid">
+                        <div class="form-row">
+                          <label for="received-date">Поступление заказа</label>
+                          <input type="date" id="received-date" name="receivedDate">
+                        </div>
+                        <div class="form-row">
+                          <label for="shipped-date">Отправление</label>
+                          <input type="date" id="shipped-date" name="shippedDate">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-fieldset" aria-labelledby="items-legend">
+                      <span id="items-legend" class="form-group-label">Товары в заказе</span>
+                      <ul id="form-items-list" class="form-items-list" aria-live="polite"></ul>
+                      <div class="form-inline">
+                        <input type="text" id="new-item-input" maxlength="200" placeholder="Название товара" aria-label="Название товара">
+                        <button type="button" id="add-item-btn" class="btn btn-secondary">Добавить товар</button>
+                      </div>
+                    </div>
+
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-primary">Добавить заказ</button>
+                      <button type="button" id="form-cancel-edit" class="btn btn-ghost hidden">Отменить редактирование</button>
+                    </div>
+                  </form>
+                </section>
+
+                <section class="card filter-section" aria-labelledby="filter-heading">
+                  <h4 id="filter-heading" class="section-title visually-hidden">Фильтр</h4>
+                  <div class="filter-bar">
+                    <label for="status-filter" class="filter-label">Статус</label>
+                    <select id="status-filter" class="filter-select" aria-label="Фильтр по статусу">
+                      <option value="all">Все</option>
+                      <option value="new">Новый</option>
+                      <option value="in_progress">В работе</option>
+                      <option value="ready">Готов</option>
+                      <option value="shipped">Отправлен</option>
+                    </select>
+                  </div>
+                </section>
+
+                <section class="list-section" aria-labelledby="list-heading">
+                  <h4 id="list-heading" class="section-title section-title--inline">Заказы</h4>
+                  <p id="empty-state" class="empty-state hidden">Заказов пока нет. Добавьте первый выше.</p>
+                  <ul id="orders-list" class="orders-list" role="list"></ul>
+                </section>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Orders App, <span id="current-year"></span></p>
+      </div>
     </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
   </div>
 
   <script src="app.js"></script>
